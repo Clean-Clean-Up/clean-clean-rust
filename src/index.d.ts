@@ -1,0 +1,1 @@
+declare module 'react-virtualized/dist/commonjs/List';
