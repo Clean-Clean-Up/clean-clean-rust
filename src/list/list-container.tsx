@@ -4,6 +4,9 @@ import List from 'react-virtualized/dist/commonjs/List';
 import { ListItem } from './list-item';
 import "../App.css";
 import { dirsDataMobx, SortType } from '../mobx/list-data';
+import { dataDir } from '@tauri-apps/api/path';
+import Loading from '../loading/loading';
+import { loadingMobx } from '../mobx/loading';
 
 export const ListContainer = observer(
     () => {

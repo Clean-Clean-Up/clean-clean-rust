@@ -25,14 +25,15 @@ use std::{
 
 use clean_clean_up::*;
 use serde::Serialize;
+use tauri::Window;
 
 #[tauri::command]
-fn enter_dir(base_path: String) -> Vec<ProjectTargetAnalysis> {
+async fn enter_dir(base_path: String, window: Window) -> Vec<ProjectTargetAnalysis> {
     println!("rust enter_dir");
     let root_dir = base_path.as_str();
     let scan_path = Path::new(root_dir);
 
-    let mut projects: Vec<_> = find_cargo_projects(scan_path, 0, true)
+    let mut projects: Vec<_> = find_cargo_projects(window, scan_path, 0, true)
         .into_iter()
         .filter_map(|proj| proj.1.then(|| ProjectTargetAnalysis::analyze(&proj.0)))
         .collect();
@@ -45,7 +46,7 @@ fn enter_dir(base_path: String) -> Vec<ProjectTargetAnalysis> {
 }
 
 #[tauri::command]
-fn remove_item(remove_path: String) -> Result<RemoveItemReturn, String> {
+async fn remove_item(remove_path: String) -> Result<RemoveItemReturn, String> {
     println!("remove_item : {} ", remove_path);
 
     let process_result =

@@ -3,14 +3,10 @@ import { open } from '@tauri-apps/api/dialog';
 import { invoke } from '@tauri-apps/api/tauri';
 import { observer } from 'mobx-react-lite';
 import { dirsDataMobx, ProjectTargetAnalysis } from '../mobx/list-data';
+import { appWindow } from '@tauri-apps/api/window';
+import { loadingMobx } from '../mobx/loading';
 
 export const PathInput = observer(() => {
-
-    async function enterDir(basePath: string) {
-        const res: ProjectTargetAnalysis[] = await invoke("enter_dir", { basePath })
-        console.log('enterDir', res);
-        dirsDataMobx.readDir(res);
-    }
 
     async function openFile() {
         const file = await open({
@@ -23,6 +19,16 @@ export const PathInput = observer(() => {
         }
         console.log('file', file)
         enterDir(file);
+    }
+
+    function enterDir(basePath: string) {
+        loadingMobx.load()
+        invoke<ProjectTargetAnalysis[]>("enter_dir", { basePath, window: appWindow })
+            .then((res: ProjectTargetAnalysis[]) => {
+                console.log('enterDir', res);
+                dirsDataMobx.readDir(res);
+                loadingMobx.loaded()
+            })
     }
 
     return (

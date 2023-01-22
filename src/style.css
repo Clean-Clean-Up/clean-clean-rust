@@ -12,11 +12,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
 }
 
 .container {
   margin: 0;
-  padding-top: 10vh;
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.container-blue { 
+  filter: blur(3px);
+  margin: 0;
+  padding-top: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

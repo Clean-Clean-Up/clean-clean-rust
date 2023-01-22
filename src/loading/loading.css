@@ -1,22 +1,48 @@
 .loading-container {
-    display: flex;
     width: 100%;
-    height: 40px;
-    background-color: black;
-    border-radius: 30px;
+    height: 100%;
     justify-content: center;
     align-items: center;
-}
-
-.fixed-loading-text {
-    position: fixed;
-}
-
-.blue-water {
-    width: 20%;
-    background-color: aqua;
-    height: 40px;
-    left: 0;
     position: absolute;
-    border-radius: 30px;
+    top: 40%;
+}
+
+.loading-text {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.loading-message {
+    font-size: 12px;
+}
+
+.dot {
+    /*让点垂直居中*/
+    height: 1em;
+    line-height: 1;
+    /*让点垂直排列*/
+    display: flex;
+    flex-direction: column;
+    /*溢出部分的点隐藏*/
+    overflow: hidden;
+    font-size: 60px;
+    width: 100%;
+}
+
+.dot::before {
+    /*三行三种点，需要搭配white-space:pre使用才能识别\A字符*/
+    content: '...\A..\A.';
+    white-space: pre-wrap;
+    animation: dot 0.8s infinite step-end;
+    /*step-end确保一次动画结束后直接跳到下一帧而没有过渡*/
+}
+
+@keyframes dot {
+    33% {
+        transform: translateY(-2em);
+    }
+
+    66% {
+        transform: translateY(-1em);
+    }
 }

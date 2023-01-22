@@ -1,5 +1,6 @@
 import { invoke } from "@tauri-apps/api/tauri";
 import { action, makeObservable, observable, runInAction } from "mobx";
+import { loadingMobx } from "./loading";
 
 export class DirsDataMobx {
     constructor() {

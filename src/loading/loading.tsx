@@ -1,14 +1,23 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
-import './loading.css'
-export default function Loading() {
-    return (
+import { loadingMobx } from '../mobx/loading';
+import './loading.css';
+
+const Loading = observer(() =>
+    // true ?
+        loadingMobx.isLoading ?
         <div className='loading-container'>
-            <div className='blue-water'>
-                
-            </div>
-            <div className="fixed-loading-text">
+            <div className="loading-text">
                 Loading
             </div>
+            <div className='dot'>
+                ...
+            </div>
+            <div className='loading-message'>
+                {loadingMobx.message}
+            </div>
         </div>
-    )
-}
+        : <></>
+)
+
+export default Loading;
