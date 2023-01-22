@@ -18,3 +18,5 @@ a app for cleaning rust project target folder.
 - language delete logic as module (such like javascript nodejs node_module/ ...)
 - rename to Clean Clean Rust
 
+## LICENSE
+MIT
