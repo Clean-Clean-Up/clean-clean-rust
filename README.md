@@ -1,10 +1,10 @@
 # Clean Clean Rust! 
-
 a app for cleaning rust project target folder.
 
 ![Jan-22-2023 11-09-42](https://user-images.githubusercontent.com/36456814/213898833-5516c782-fd57-4017-bea1-18fa5ebf14a5.gif)
 
-## [Download](https://github.com/Clean-Clean-Up/clean-clean-rust/releases)
+## [Download](https://github.com/Clean-Clean-Up/clean-clean-rust/releases) ![](https://img.shields.io/github/downloads/Clean-Clean-Up/clean-clean-rust/total?label=downloads)
+
 
 ## now features:
 
